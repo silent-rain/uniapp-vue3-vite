@@ -10,6 +10,8 @@ import { viteMockServe } from 'vite-plugin-mock';
 import viteSvgIcons from 'vite-plugin-svg-icons';
 import VueSetupExtend from 'vite-plugin-vue-setup-extend-plus';
 
+import { routerPagesPlugin } from './src/plugins/routerPagesPlugin';
+
 import { setting } from './src/settings';
 
 const prodMock = setting.openProdMock;
@@ -48,6 +50,7 @@ export default defineConfig(({ command, mode }) => {
       strictPort: true,
     },
     plugins: [
+      routerPagesPlugin(),
       uni(),
       vueJsx(),
       viteSvgIcons({
