@@ -1,4 +1,4 @@
-export const constantRoutes = [
+export const pageRoutes = [
   //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
   {
     path: 'pages/index/index',
@@ -6,11 +6,17 @@ export const constantRoutes = [
       navigationBarTitleText: 'uni-app',
     },
   },
+  {
+    path: 'pages/errorPage/index',
+    style: {
+      navigationBarTitleText: 'not-found',
+    },
+  },
 ];
 
 // 全局路由, 将转译为 src/pages.json 文件
 export const pagesJsonRouter = {
-  pages: [...constantRoutes],
+  pages: [...pageRoutes],
   globalStyle: {
     navigationBarTextStyle: 'black',
     navigationBarTitleText: 'uni-app',

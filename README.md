@@ -14,4 +14,6 @@
 - Vue 3 Snippets
 - vue3-snippets
 - vue3-snippets-for-vscode
+- Vue Language Features (Volar)
+
 

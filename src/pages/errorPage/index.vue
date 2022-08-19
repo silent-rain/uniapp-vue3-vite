@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-const title = ref('Hello');
+const title = ref('404');
 </script>
 
 <style>

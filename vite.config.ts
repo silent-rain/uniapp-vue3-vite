@@ -134,7 +134,7 @@ export default defineConfig(({ command, mode }) => {
         '@': resolve(__dirname, 'src'),
       },
       //why remove it , look for https://github.com/vitejs/vite/issues/6026
-      // extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.vue', '.mjs']
+      extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.vue', '.mjs'],
     },
   };
 });
