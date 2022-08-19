@@ -4,5 +4,5 @@ declare interface Window {
 }
 
 //declare import module
-// declare module '*/**';
-// declare module '*';
+declare module '*/**';
+declare module '*';
