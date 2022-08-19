@@ -24,11 +24,12 @@ const pageRoutesToRouter = (): RouterTy => {
 
 const constantRoutes: RouterTy = [
   ...pageRoutesToRouter(),
-  // {
-  //   path: '/login',
-  //   component: () => import('@/pages/errorPage/index.vue'),
-  //   hidden: true,
-  // },
+  {
+    path: '/login',
+    // component: () => import('@/pages/errorPage/index.vue'),
+    component: () => import('../pages/errorPage/index.vue'),
+    hidden: true,
+  },
   // {
   //   path: '/401',
   //   component: () => import('@/pages/errorPage/index.vue'),

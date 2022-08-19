@@ -1,3 +1,6 @@
+/**
+ * 导出模块声名使用案例
+ */
 declare let foo: number;
 
 declare function greet(greeting: string): void;

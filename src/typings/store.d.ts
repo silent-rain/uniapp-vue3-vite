@@ -1,4 +1,4 @@
-// the ts file of vuex
-import { ObjTy } from '@/types/common';
+// the ts file of pinia
+import { ObjTy } from '~/common';
 
 export interface StateTy {}
