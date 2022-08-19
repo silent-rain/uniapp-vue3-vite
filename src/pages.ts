@@ -7,7 +7,7 @@ export const pageRoutes = [
     },
   },
   {
-    path: 'pages/errorPage/index',
+    path: 'pages/error/index',
     style: {
       navigationBarTitleText: 'not-found',
     },

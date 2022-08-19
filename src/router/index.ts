@@ -24,15 +24,14 @@ const pageRoutesToRouter = (): RouterTy => {
 
 const constantRoutes: RouterTy = [
   ...pageRoutesToRouter(),
-  {
-    path: '/login',
-    // component: () => import('@/pages/errorPage/index.vue'),
-    component: () => import('../pages/errorPage/index.vue'),
-    hidden: true,
-  },
+  // {
+  //   path: '/login',
+  //   component: () => import('@/pages/error/index.vue'),
+  //   hidden: true,
+  // },
   // {
   //   path: '/401',
-  //   component: () => import('@/pages/errorPage/index.vue'),
+  //   component: () => import('@/pages/error/index.vue'),
   //   hidden: true,
   // },
   // { path: '/:pathMatch(.*)', redirect: '/404', hidden: true },
