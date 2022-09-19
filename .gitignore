@@ -1,0 +1,17 @@
+# fe
+node_modules
+dist
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+tests/**/coverage/
+auto-imports.d.ts
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
