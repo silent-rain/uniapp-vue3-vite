@@ -20,8 +20,9 @@ onBeforeMount(() => {
   console.log('onBeforeMount');
 });
 
+const title = ref('Hello');
+
 onBeforeMount(async () => {
-  const title = ref('Hello');
   greet(title.value);
   greet3();
 });
