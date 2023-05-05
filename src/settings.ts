@@ -1,4 +1,4 @@
-import { SettingTy } from '~/common';
+import type { SettingTy } from '@/typings/common';
 
 const setting: SettingTy = {
   title: 'hello uni-app',

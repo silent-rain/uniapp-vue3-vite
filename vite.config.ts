@@ -3,13 +3,9 @@ import uni from '@dcloudio/vite-plugin-uni';
 import path, { resolve } from 'path';
 // import vue from '@vitejs/plugin-vue';
 // import legacy from '@vitejs/plugin-legacy';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import AutoImport from 'unplugin-auto-import/vite';
-import { createHtmlPlugin } from 'vite-plugin-html';
-import { viteMockServe } from 'vite-plugin-mock';
-import viteSvgIcons from 'vite-plugin-svg-icons';
-import VueSetupExtend from 'vite-plugin-vue-setup-extend-plus';
-
+// import vueJsx from '@vitejs/plugin-vue-jsx';
+// import { viteMockServe } from 'vite-plugin-mock';
+// 自定义路由插件
 import { routerPagesPlugin } from './src/plugins/routerPagesPlugin';
 
 import { setting } from './src/settings';
@@ -52,64 +48,25 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       routerPagesPlugin(),
       uni(),
-      vueJsx(),
-      viteSvgIcons({
-        // config svg dir that can config multi
-        iconDirs: [path.resolve(process.cwd(), 'src/icons/common'), path.resolve(process.cwd(), 'src/icons/nav-bar')],
-        // appoint svg icon using mode
-        symbolId: 'icon-[dir]-[name]',
-      }),
       //https://github.com/anncwb/vite-plugin-mock/blob/HEAD/README.zh_CN.md
-      viteMockServe({
-        supportTs: true,
-        mockPath: 'mock',
-        localEnabled: command === 'serve',
-        prodEnabled: prodMock,
-        injectCode: `
-	          import { setupProdMockServer } from './mockProdServer';
-	          setupProdMockServer();
-	        `,
-        logger: true,
-      }),
-      VueSetupExtend(),
-      //https://github.com/antfu/unplugin-auto-import/blob/HEAD/src/types.ts
-      AutoImport({
-        // resolvers: [ElementPlusResolver()],
-        imports: [
-          'vue',
-          'pinia',
-          'vue-router',
-          {
-            // '@/hooks/global/useCommon': ['useCommon'],
-            // '@/utils/axiosReq': ['axiosReq'],
-          },
-        ],
-        eslintrc: {
-          enabled: true, // Default `false`
-          filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
-          globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
-        },
-        dts: true, //auto generation auto-imports.d.ts file
-      }),
-      // auto config of index.html title
-      createHtmlPlugin({
-        inject: {
-          // Inject data into ejs template
-          data: {
-            title: setting.title,
-          },
-        },
-      }),
-      // Components({
-      //   resolvers: [ElementPlusResolver()]
-      // })
+      // viteMockServe({
+      //   supportTs: true,
+      //   mockPath: 'mock',
+      //   localEnabled: command === 'serve',
+      //   prodEnabled: prodMock,
+      //   injectCode: `
+      //       import { setupProdMockServer } from './mockProdServer';
+      //       setupProdMockServer();
+      //     `,
+      //   logger: true,
+      // }),
     ],
     build: {
-      //target: 'es2015',
+      target: 'esnext',
       minify: 'terser',
       brotliSize: false,
       // 消除打包大小超过500kb警告
-      chunkSizeWarningLimit: 5000,
+      chunkSizeWarningLimit: 500,
       //remote console.log in prod
       terserOptions: {
         //detail to look https://terser.org/docs/api-reference#compress-options

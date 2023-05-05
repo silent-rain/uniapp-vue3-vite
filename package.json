@@ -14,11 +14,14 @@
   "license": "MIT",
   "scripts": {
     "dev:app": "uni -p app",
+    "dev:app-android": "uni -p app-android",
+    "dev:app-ios": "uni -p app-ios",
     "dev:custom": "uni -p",
     "dev:h5": "uni",
     "dev:h5:ssr": "uni --ssr",
     "dev:mp-alipay": "uni -p mp-alipay",
     "dev:mp-baidu": "uni -p mp-baidu",
+    "dev:mp-jd": "uni -p mp-jd",
     "dev:mp-kuaishou": "uni -p mp-kuaishou",
     "dev:mp-lark": "uni -p mp-lark",
     "dev:mp-qq": "uni -p mp-qq",
@@ -28,11 +31,14 @@
     "dev:quickapp-webview-huawei": "uni -p quickapp-webview-huawei",
     "dev:quickapp-webview-union": "uni -p quickapp-webview-union",
     "build:app": "uni build -p app",
+    "build:app-android": "uni build -p app-android",
+    "build:app-ios": "uni build -p app-ios",
     "build:custom": "uni build -p",
     "build:h5": "uni build",
     "build:h5:ssr": "uni build --ssr",
     "build:mp-alipay": "uni build -p mp-alipay",
     "build:mp-baidu": "uni build -p mp-baidu",
+    "build:mp-jd": "uni build -p mp-jd",
     "build:mp-kuaishou": "uni build -p mp-kuaishou",
     "build:mp-lark": "uni build -p mp-lark",
     "build:mp-qq": "uni build -p mp-qq",
@@ -41,52 +47,49 @@
     "build:quickapp-webview": "uni build -p quickapp-webview",
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
+    "type-check": "vue-tsc --noEmit",
     "preview": "npm run dev:h5 && vite preview ",
     "lint": "eslint --ext .js,.jsx,.vue,.ts,.tsx src",
     "lint:fix": "eslint --ext .js,.jsx,.vue,.ts,.tsx src --fix"
   },
   "dependencies": {
-    "@dcloudio/uni-app": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/uni-app-plus": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/uni-components": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/uni-h5": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/uni-mp-alipay": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/uni-mp-baidu": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/uni-mp-kuaishou": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/uni-mp-lark": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/uni-mp-qq": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/uni-mp-toutiao": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/uni-mp-weixin": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3050420220804004",
-    "express": "^4.17.1",
+    "@dcloudio/uni-app": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-app-plus": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-components": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-h5": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-mp-alipay": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-mp-baidu": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-mp-jd": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-mp-kuaishou": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-mp-lark": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-mp-qq": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-mp-toutiao": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-mp-weixin": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3080120230428001",
     "js-cookie": "2.2.0",
-    "js-error-collection": "^1.0.7",
     "pinia": "^2.0.18",
-    "vue": "^3.2.37",
+    "vue": "^3.2.45",
     "vue-i18n": "^9.1.9",
     "vue-router": "^4.1.3"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.16.3",
-    "@babel/preset-env": "^7.17.10",
-    "@babel/preset-typescript": "^7.6.0",
-    "@dcloudio/types": "^2.6.12",
-    "@dcloudio/uni-automator": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/uni-cli-shared": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/uni-stacktracey": "3.0.0-alpha-3050420220804004",
-    "@dcloudio/vite-plugin-uni": "3.0.0-alpha-3050420220804004",
-    "@types/jest": "<27",
+    "@dcloudio/types": "^3.3.2",
+    "@dcloudio/uni-automator": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-cli-shared": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uni-stacktracey": "3.0.0-alpha-3080120230428001",
+    "@dcloudio/uvm": "^0.2.4",
+    "@dcloudio/vite-plugin-uni": "3.0.0-alpha-3080120230428001",
     "@types/mockjs": "1.0.3",
     "@types/node": "15.0.1",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
     "@vitejs/plugin-vue": "1.10.2",
-    "@vitejs/plugin-vue-jsx": "1.3.1",
     "@vue/cli-plugin-typescript": "^4.2.0",
     "@vue/cli-plugin-unit-jest": "4.5.17",
     "@vue/cli-service": "4.5.17",
     "@vue/test-utils": "^2.0.0-rc.18",
-    "babel-jest": "<27",
+    "@vue/tsconfig": "^0.1.3",
     "eslint": "7.32.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "2.25.3",
@@ -99,104 +102,13 @@
     "majestic": "1.8.1",
     "mockjs": "1.1.0",
     "prettier": "^2.7.1",
-    "sass": "1.32.12",
     "scss": "0.2.4",
-    "svg-sprite-loader": "6.0.11",
-    "ts-jest": "<27",
-    "ts-node": "10.7.0",
-    "tslib": "^2.4.0",
     "typescript": "^4.5.4",
-    "unplugin-auto-import": "^0.5.11",
-    "unplugin-vue-components": "^0.17.14",
-    "vite": "^3.0.8",
-    "vite-plugin-html": "^3.2.0",
+    "vite": "4.0.3",
     "vite-plugin-mock": "^2.9.6",
-    "vite-plugin-style-import": "1.2.1",
-    "vite-plugin-svg-icons": "1.0.5",
-    "vite-plugin-vue-setup-extend-plus": "0.0.2",
-    "vue-eslint-parser": "^9.0.3",
-    "vue-jest": "^5.0.0-alpha.10",
     "vue-tsc": "0.28.1"
   },
-  "dcloudext": {
-    "category": [
-      "前端页面模板",
-      "uni-app前端项目模板"
-    ],
-    "sale": {
-      "regular": {
-        "price": "0.00"
-      },
-      "sourcecode": {
-        "price": "0.00"
-      }
-    },
-    "contact": {
-      "qq": ""
-    },
-    "declaration": {
-      "ads": "无",
-      "data": "无",
-      "permissions": "无"
-    },
-    "npmurl": ""
-  },
-  "uni_modules": {
-    "dependencies": [],
-    "encrypt": [],
-    "platforms": {
-      "cloud": {
-        "tcb": "y",
-        "aliyun": "y"
-      },
-      "client": {
-        "App": {
-          "app-vue": "y",
-          "app-nvue": "y"
-        },
-        "H5-mobile": {
-          "Safari": "y",
-          "Android Browser": "y",
-          "微信浏览器(Android)": "y",
-          "QQ浏览器(Android)": "y"
-        },
-        "H5-pc": {
-          "Chrome": "y",
-          "IE": "y",
-          "Edge": "y",
-          "Firefox": "y",
-          "Safari": "y"
-        },
-        "小程序": {
-          "微信": "y",
-          "阿里": "y",
-          "百度": "y",
-          "字节跳动": "y",
-          "QQ": "y",
-          "京东": "y"
-        },
-        "快应用": {
-          "华为": "u",
-          "联盟": "u"
-        },
-        "Vue": {
-          "vue2": "y",
-          "vue3": "y"
-        }
-      }
-    }
-  },
   "uni-app": {
-    "scripts": {
-      "mp-dingtalk": {
-        "title": "钉钉小程序",
-        "env": {
-          "UNI_PLATFORM": "mp-alipay"
-        },
-        "define": {
-          "MP-DINGTALK": true
-        }
-      }
-    }
+    "scripts": {}
   }
 }
