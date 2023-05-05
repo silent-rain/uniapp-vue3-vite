@@ -13,8 +13,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-const title = ref('Hello');
+import { onBeforeMount, ref } from 'vue';
+import { greet, greet3 } from '@mywasm/foo';
+
+onBeforeMount(() => {
+  console.log('onBeforeMount');
+});
+
+onBeforeMount(async () => {
+  const title = ref('Hello');
+  greet(title.value);
+  greet3();
+});
 </script>
 
 <style>

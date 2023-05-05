@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import uni from '@dcloudio/vite-plugin-uni';
 import path, { resolve } from 'path';
+import { ViteRsw } from 'vite-plugin-rsw';
 // import vue from '@vitejs/plugin-vue';
 // import legacy from '@vitejs/plugin-legacy';
 // import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -48,6 +49,7 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       routerPagesPlugin(),
       uni(),
+      ViteRsw(),
       //https://github.com/anncwb/vite-plugin-mock/blob/HEAD/README.zh_CN.md
       // viteMockServe({
       //   supportTs: true,

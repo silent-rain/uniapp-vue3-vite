@@ -17,7 +17,7 @@
     "dev:app-android": "uni -p app-android",
     "dev:app-ios": "uni -p app-ios",
     "dev:custom": "uni -p",
-    "dev:h5": "uni",
+    "dev:h5": "rsw build && uni",
     "dev:h5:ssr": "uni --ssr",
     "dev:mp-alipay": "uni -p mp-alipay",
     "dev:mp-baidu": "uni -p mp-baidu",
@@ -48,6 +48,7 @@
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
     "type-check": "vue-tsc --noEmit",
+    "rsw": "rsw",
     "preview": "npm run dev:h5 && vite preview ",
     "lint": "eslint --ext .js,.jsx,.vue,.ts,.tsx src",
     "lint:fix": "eslint --ext .js,.jsx,.vue,.ts,.tsx src --fix"
@@ -106,6 +107,7 @@
     "typescript": "^4.5.4",
     "vite": "4.0.3",
     "vite-plugin-mock": "^2.9.6",
+    "vite-plugin-rsw": "^2.0.11",
     "vue-tsc": "0.28.1"
   },
   "uni-app": {
