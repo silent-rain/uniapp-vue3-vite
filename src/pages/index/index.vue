@@ -14,7 +14,9 @@
 
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue';
-// import { greet, greet3 } from '@mywasm/foo';
+//#ifdef H5
+import { greet } from '@mywasm/foo';
+//#endif
 
 onBeforeMount(() => {
   console.log('onBeforeMount');
@@ -22,9 +24,11 @@ onBeforeMount(() => {
 
 const title = ref('Hello');
 
+//#ifdef H5
 onBeforeMount(async () => {
-  // greet(title.value);
+  greet(title.value);
 });
+//#endif
 </script>
 
 <style lang="scss">

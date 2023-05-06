@@ -10,8 +10,10 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
 
-// import InitWasm from '@mywasm/foo';
-// InitWasm();
+//#ifdef H5
+import InitWasm from '@mywasm/foo';
+InitWasm();
+//#endif
 
 export function createApp() {
   const app = createSSRApp(App);
