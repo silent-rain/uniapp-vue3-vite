@@ -52,11 +52,11 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
       ViteRsw(),
       vueJsx(),
       //https://github.com/anncwb/vite-plugin-mock/blob/HEAD/README.zh_CN.md
-      viteMockServe({
-        mockPath: 'mock',
-        enable: true,
-        logger: true,
-      }),
+      // viteMockServe({
+      //   mockPath: 'mock',
+      //   enable: true,
+      //   logger: true,
+      // }),
     ],
     build: {
       target: 'esnext',

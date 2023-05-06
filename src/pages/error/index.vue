@@ -17,7 +17,7 @@ import { ref } from 'vue';
 const title = ref('404');
 </script>
 
-<style>
+<style lang="scss">
 .content {
   display: flex;
   flex-direction: column;

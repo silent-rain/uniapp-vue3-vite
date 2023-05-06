@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue';
-import { greet, greet3 } from '@mywasm/foo';
+// import { greet, greet3 } from '@mywasm/foo';
 
 onBeforeMount(() => {
   console.log('onBeforeMount');
@@ -23,11 +23,11 @@ onBeforeMount(() => {
 const title = ref('Hello');
 
 onBeforeMount(async () => {
-  greet(title.value);
+  // greet(title.value);
 });
 </script>
 
-<style>
+<style lang="scss">
 .content {
   display: flex;
   flex-direction: column;
