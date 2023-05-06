@@ -24,7 +24,6 @@ const title = ref('Hello');
 
 onBeforeMount(async () => {
   greet(title.value);
-  greet3();
 });
 </script>
 

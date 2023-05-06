@@ -1,101 +1,77 @@
-import { createRouter, createWebHistory, Router } from 'vue-router';
-import { RouterTy } from '~/router';
-import { pageRoutes } from '@/pages';
+//https://ext.dcloud.net.cn/plugin?id=4000
+import Router from 'uni-router-interceptor';
 
-const pageRoutesToRouter = (): RouterTy => {
-  const routes: RouterTy = [];
-  pageRoutes.forEach((routeItem, index) => {
-    // if (index === 0) {
-    //   routes.push({
-    //     path: `/`,
-    //     component: () => import(/* @vite-ignore */ `@/${routeItem.path}.vue`),
-    //     // component: () => import('@/pages/index/index.vue'),
-    //     hidden: true,
-    //   });
-    // }
-    routes.push({
-      path: `/${routeItem.path}`,
-      component: () => import(/* @vite-ignore */ `@/${routeItem.path}`),
-      hidden: true,
-    });
+const router = new Router({
+  homePage: '', // 首页的page路由
+});
+
+// 路由前置拦截器
+router.beforeEach((to: any, from: any, next: (b: boolean) => void) => {
+  // TODO something
+  console.log('beforeEach');
+  console.log('to: ', to);
+  console.log('from: ', from);
+
+  // 必须执行 next() 否则路由不会继续向下执行
+  // next 函数需要传递一个 boolean 值参数
+  // 不传参时默认为 true，路由会继续执行跳转。
+  // 参数为 false 时禁止跳转，并在 error 回调中抛出异常
+  next(true);
+  console.log('beforeEach2');
+  // 禁止跳转
+  // next(false)
+});
+
+// 路由后置拦截器
+router.afterEach((to: any, from: any) => {
+  // TODO something
+  console.log('afterEach');
+});
+
+// 捕获路由错误信息
+router.error((err: any) => {
+  console.log(err);
+  // TODO something
+});
+
+// 保留当前页面，跳转到应用内的某个页面
+export const navigateTo = ({ url, query }: { url: string; query: any }) => {
+  router['navigateTo']({
+    url: url,
+    query: query, // 路由传参
   });
-  return routes;
 };
 
-const constantRoutes: RouterTy = [
-  ...pageRoutesToRouter(),
-  // {
-  //   path: '/login',
-  //   component: () => import('@/pages/error/index.vue'),
-  //   hidden: true,
-  // },
-  // {
-  //   path: '/401',
-  //   component: () => import('@/pages/error/index.vue'),
-  //   hidden: true,
-  // },
-  // { path: '/:pathMatch(.*)', redirect: '/404', hidden: true },
-];
+// 关闭当前页面，跳转到应用内的某个页面
+export const redirectTo = ({ url, query }: { url: string; query: any }) => {
+  router['redirectTo']({
+    url: url,
+    query: query, // 路由传参
+  });
+};
+// 关闭所有页面，打开到应用内的某个页面。
+export const reLaunch = ({ url, query }: { url: string; query: any }) => {
+  router['reLaunch']({
+    url: url,
+    query: query, // 路由传参
+  });
+};
+// 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
+export const switchTab = (url: string) => {
+  router['switchTab']({
+    url: url,
+  });
+};
+// 关闭当前页面，返回上一页面或多级页面
+export const navigateBack = () => {
+  router['navigateBack']();
+};
 
-const router: Router = createRouter({
-  history: createWebHistory(),
-  scrollBehavior: () => ({ top: 0 }),
-  routes: constantRoutes,
-});
+// 预加载页面
+export const preloadPage = (url: string) => {
+  router['preloadPage']({
+    url: url,
+  });
+};
 
-export { router };
-
-// no redirect whitelist
-const whiteList = ['/login', '/404', '/401'];
-// 路由异常重试机制
-let retryTotal = 50;
-let retryCount = 0;
-
-router.beforeEach(async (to: any, from, next: any) => {
-  console.log('beforeEach...');
-  // 白名单
-  if (whiteList.indexOf(to.path) !== -1) {
-    next();
-    return;
-  }
-
-  // 路由异常重试机制
-  if (retryCount > retryTotal) {
-    next(false);
-    return;
-  }
-
-  // 判断是否登录
-  const hasToken = 'xxxxxxxxxx';
-  if (hasToken) {
-    next();
-    return;
-  }
-
-  // 是都是登录
-  if (to.path === '/login') {
-    next({ path: '/' });
-    return;
-  }
-
-  // 登录、全局业务逻辑
-  try {
-    // 请求成功后重试机制置为0
-    retryCount = 0;
-
-    console.log('beforeEach...');
-
-    // hack method to ensure that addRoutes is complete
-    // set the replace: true, so the navigation will not leave a history record
-    next({ ...to, replace: true });
-  } catch (err) {
-    console.log(err);
-    retryCount += 1;
-    next(`/login?redirect=${to.path}`);
-  }
-  retryCount += 1;
-});
-
-router.afterEach(() => {
-  console.log('afterEach...');
-});
+export default router;

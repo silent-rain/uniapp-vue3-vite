@@ -8,7 +8,7 @@ import { createSSRApp } from 'vue';
 import { createPinia } from 'pinia';
 
 import App from './App.vue';
-// import { router } from './router';
+import router from './router';
 
 import InitWasm from '@mywasm/foo';
 InitWasm();
@@ -16,7 +16,7 @@ InitWasm();
 export function createApp() {
   const app = createSSRApp(App);
   app.use(createPinia());
-  // app.use(router);
+  app.use(router);
   return {
     app,
   };
