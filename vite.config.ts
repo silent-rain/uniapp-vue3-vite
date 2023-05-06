@@ -1,11 +1,11 @@
-import { defineConfig } from 'vite';
+import { ConfigEnv, UserConfigExport } from 'vite';
 import uni from '@dcloudio/vite-plugin-uni';
 import path, { resolve } from 'path';
 import { ViteRsw } from 'vite-plugin-rsw';
 // import vue from '@vitejs/plugin-vue';
 // import legacy from '@vitejs/plugin-legacy';
-// import vueJsx from '@vitejs/plugin-vue-jsx';
-// import { viteMockServe } from 'vite-plugin-mock';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import { viteMockServe } from 'vite-plugin-mock';
 // 自定义路由插件
 import { routerPagesPlugin } from './src/plugins/routerPagesPlugin';
 
@@ -14,7 +14,7 @@ import { setting } from './src/settings';
 const prodMock = setting.openProdMock;
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
+export default ({ command }: ConfigEnv): UserConfigExport => {
   return {
     base: setting.viteBasePath,
     define: {
@@ -50,23 +50,18 @@ export default defineConfig(({ command, mode }) => {
       routerPagesPlugin(),
       uni(),
       ViteRsw(),
+      vueJsx(),
       //https://github.com/anncwb/vite-plugin-mock/blob/HEAD/README.zh_CN.md
-      // viteMockServe({
-      //   supportTs: true,
-      //   mockPath: 'mock',
-      //   localEnabled: command === 'serve',
-      //   prodEnabled: prodMock,
-      //   injectCode: `
-      //       import { setupProdMockServer } from './mockProdServer';
-      //       setupProdMockServer();
-      //     `,
-      //   logger: true,
-      // }),
+      viteMockServe({
+        mockPath: 'mock',
+        enable: true,
+        logger: true,
+      }),
     ],
     build: {
       target: 'esnext',
       minify: 'terser',
-      brotliSize: false,
+      // brotliSize: false,
       // 消除打包大小超过500kb警告
       chunkSizeWarningLimit: 500,
       //remote console.log in prod
@@ -96,4 +91,4 @@ export default defineConfig(({ command, mode }) => {
       extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.vue', '.mjs'],
     },
   };
-});
+};

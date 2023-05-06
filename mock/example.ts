@@ -1,45 +1,43 @@
-import { MockMethod } from 'vite-plugin-mock';
+import type { MockMethod } from 'vite-plugin-mock';
 
-// eslint-disable-next-line import/no-default-export
 export default [
   {
-    url: '/integration-front/user/loginValid',
-    method: 'POST',
-    response: () => {
-      return {
-        msg: '操作成功!',
-        code: 20000,
-        data: {
-          jwtToken: 'xxxx.xxxxx.xxx',
-          username: 'admin',
-        },
-      };
-    },
-  },
-  {
-    url: '/integration-front/user/getUserInfo',
-    method: 'POST',
-    response: () => {
-      return {
-        msg: '操作成功!',
-        code: 20000,
-        data: {
-          exp: 1656909607,
-          iat: 1656650407,
-          username: 'admin',
-        },
-      };
-    },
-  },
-  {
-    url: '/getMapInfo',
+    url: '/api/get',
     method: 'get',
-    response: () => {
+    response: ({ query }) => {
       return {
-        msg: '操作成功!',
         code: 0,
-        data: 'mock请求测试',
+        data: {
+          name: 'vben',
+        },
       };
+    },
+  },
+  {
+    url: '/api/post',
+    method: 'post',
+    timeout: 2000,
+    response: {
+      code: 0,
+      data: {
+        name: 'vben',
+      },
+    },
+  },
+  {
+    url: '/api/text',
+    method: 'post',
+    rawResponse: async (req, res) => {
+      let reqbody = '';
+      await new Promise((resolve) => {
+        req.on('data', (chunk) => {
+          reqbody += chunk;
+        });
+        req.on('end', () => resolve(undefined));
+      });
+      res.setHeader('Content-Type', 'text/plain');
+      res.statusCode = 200;
+      res.end(`hello, ${reqbody}`);
     },
   },
 ] as MockMethod[];
